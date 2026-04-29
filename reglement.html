@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los Santos Stories | Règlement</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo">
+      <img src="img/Logo_LSS.png" alt="Logo">
+      <span>LS Stories</span>
+    </div>
+
+    <nav class="nav">
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="reglement.html" class="active">Règlement</a></li>
+        <li><a href="entreprise-illegal.html">Entreprise / Illégal</a></li>
+        <li><a href="main-team.html">Main Team</a></li>
+      </ul>
+
+      <a href="https://discord.gg/PwrM5KvMkx" target="_blank" class="discord-header-btn">
+        Discord
+      </a>
+    </nav>
+
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
+
+  <main class="page">
+    <section class="section">
+      <h1>📜 Règlement du serveur</h1>
+      <p class="section-desc">
+        Recherche une règle avec un mot-clé ou un numéro comme 1.2, 4.11, 1.7a.
+      </p>
+
+      <div class="rules-tools">
+        <input type="text" id="rulesSearch" placeholder="🔎 Rechercher une règle (ex: 1.2, respect, tir...)">
+
+        <select id="rulesFilter">
+          <option value="all">Toutes les catégories</option>
+          <option value="personnage">Personnages</option>
+          <option value="general">Règles générales</option>
+          <option value="illegal">Illégal</option>
+          <option value="legal">Légal</option>
+          <option value="entreprise">Entreprises</option>
+          <option value="gang">Gangs</option>
+          <option value="crew">Crews</option>
+          <option value="leader">Leaders</option>
+          <option value="zone">Zones vertes</option>
+        </select>
+
+        <a href="https://discord.gg/PwrM5KvMkx" target="_blank" class="staff-btn">
+          💬 Support
+        </a>
+      </div>
+
+      <p id="searchResultText" class="section-desc"></p>
+
+      <div class="cards-grid">
+
+        <div class="card rule-card" data-category="personnage" data-rule-key="personnage" onclick="toggleRule(this)">
+          <h3>Règles Personnages</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>1.1 Personnage réaliste obligatoire.</li>
+              <li>1.2 Nom et prénom RP obligatoires.</li>
+              <li>2.2 Deux personnages maximum.</li>
+              <li>2.7 Pas de transfert entre personnages.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'personnage')">Voir le détail complet</button>
+          </div>
+        </div>
+
+        <div class="card rule-card" data-category="general" data-rule-key="glossaire" onclick="toggleRule(this)">
+          <h3>Glossaire RP</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>IC / OOC.</li>
+              <li>Metagaming, Fail RP, PowerGaming.</li>
+              <li>Pain RP, Fear RP, MassRP.</li>
+              <li>Car Ramming / Car Kill.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'glossaire')">Voir le détail complet</button>
+          </div>
+        </div>
+
+        <div class="card rule-card" data-category="general" data-rule-key="general" onclick="toggleRule(this)">
+          <h3>Règles Générales</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>1.1 Bug abuse interdit.</li>
+              <li>1.2 Cheat interdit.</li>
+              <li>4.2 Interdiction de quitter une scène RP.</li>
+              <li>5.1 Maximum 40 personnes sur une scène.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'general')">Voir le détail complet</button>
+          </div>
+        </div>
+
+        <div class="card rule-card" data-category="illegal" data-rule-key="illegal" onclick="toggleRule(this)">
+          <h3>Règles Illégales</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>1.1 QG interdit sans motif IC.</li>
+              <li>1.6 Braquage encadré.</li>
+              <li>1.9 Teaming interdit.</li>
+              <li>1.10 Prises d’otages réglementées.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'illegal')">Voir le détail complet</button>
+          </div>
+        </div>
+
+        <div class="card rule-card" data-category="legal" data-rule-key="legal" onclick="toggleRule(this)">
+          <h3>Règles Légales</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>1.1 Respect des normes établies.</li>
+              <li>1.6 Corruption uniquement sur validation.</li>
+              <li>1.10 40 minutes avant cellule.</li>
+              <li>1.12 EMS hors zone de fusillade.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'legal')">Voir le détail complet</button>
+          </div>
+        </div>
+
+        <div class="card rule-card" data-category="entreprise" data-rule-key="entreprise" onclick="toggleRule(this)">
+          <h3>Règles Entreprises</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>1.1 Entreprises considérées comme neutres.</li>
+              <li>1.2 Politiques internes autorisées.</li>
+              <li>1.3 Cohérence RP importante.</li>
+              <li>1.4 Membres bien formés.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'entreprise')">Voir le détail complet</button>
+          </div>
+        </div>
+
+        <div class="card rule-card" data-category="gang" data-rule-key="gang" onclick="toggleRule(this)">
+          <h3>Règles Gangs</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>1.1 Minimum 10 membres.</li>
+              <li>1.2 Alliance interdite sauf contexte RP.</li>
+              <li>1.3a Reprise du lead possible.</li>
+              <li>1.4 Renversement possible.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'gang')">Voir le détail complet</button>
+          </div>
+        </div>
+
+        <div class="card rule-card" data-category="crew" data-rule-key="crew" onclick="toggleRule(this)">
+          <h3>Règles Crews</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>1.1 Ticket obligatoire.</li>
+              <li>1.2 Minimum 6 personnes.</li>
+              <li>1.3 Alliance possible avec gang.</li>
+              <li>1.5 Démantèlement possible.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'crew')">Voir le détail complet</button>
+          </div>
+        </div>
+
+        <div class="card rule-card" data-category="leader" data-rule-key="leader" onclick="toggleRule(this)">
+          <h3>Règles Leaders</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>1.1 Leader jusqu’à destitution RP.</li>
+              <li>1.2 Successeur obligatoire si départ.</li>
+              <li>1.3 Sanctions admin influentes.</li>
+              <li>1.4 Corruption très encadrée.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'leader')">Voir le détail complet</button>
+          </div>
+        </div>
+
+        <div class="card rule-card" data-category="zone" data-rule-key="zone" onclick="toggleRule(this)">
+          <h3>Règles Zones Vertes</h3>
+          <p class="click-text">Clique ici pour voir le résumé</p>
+          <div class="rule-content">
+            <ul>
+              <li>1.1 Aucun crime autorisé.</li>
+              <li>1.2 Interdiction de fuir une scène en ZV.</li>
+              <li>1.3 Vol, meurtre et braquage interdits.</li>
+              <li>1.4 Liste des zones vertes.</li>
+            </ul>
+            <button class="details-btn" onclick="openRuleModal(event, 'zone')">Voir le détail complet</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div class="rule-modal" id="ruleModal">
+    <div class="rule-modal-content">
+      <button class="close-modal" onclick="closeRuleModal()">✕</button>
+      <h2 id="modalTitle">Règlement</h2>
+      <div id="modalText"></div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Los Santos Stories — Tous droits réservés.
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.querySelector(".nav");
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+      });
+    }
+
+    function toggleRule(card) {
+      document.querySelectorAll(".rule-card").forEach(el => {
+        if (el !== card) el.classList.remove("active");
+      });
+
+      card.classList.toggle("active");
+    }
+
+    const rulesData = {
+      personnage: {
+        title: "Règles Personnages",
+        content: `
+          <p><strong>1.1</strong> Votre personnage doit être réaliste. Exemple : pas d’yeux de démon.</p>
+          <p><strong>1.2</strong> Votre personnage doit avoir un nom et prénom RP.</p>
+          <p><strong>1.3</strong> Votre personnage ne doit pas porter le nom d’une célébrité ou d’un personnage fictif.</p>
+          <p><strong>1.4</strong> Votre personnage ne peut pas être mineur, sauf validation du STAFF + possession d’un VIP.</p>
+          <p><strong>2.1</strong> L’ID unique le plus bas sera considéré comme votre personnage principal. Le second personnage est donc le twink.</p>
+          <p><strong>2.2</strong> Vous avez le droit de créer 2 personnages maximum.</p>
+          <p><strong>2.3</strong> Vos deux personnages ne peuvent pas se connaître.</p>
+          <p><strong>2.4</strong> Vos personnages ne peuvent pas appartenir à la même structure.</p>
+          <p><strong>2.5</strong> Il est interdit d’avoir un personnage dans une structure légale et l’autre illégale.</p>
+          <p><strong>2.6</strong> Les achats se font par personnage.</p>
+          <p><strong>2.7</strong> Le transfert d’items, armes, argent, biens immobiliers, etc. entre personnages est interdit.</p>
+          <p><strong>2.8</strong> Il est interdit de donner un de ses personnages à quelqu’un d’autre.</p>
+        `
+      },
+
+      glossaire: {
+        title: "Glossaire RP",
+        content: `
+          <p><strong>IC — In Character</strong> : être dans son personnage.</p>
+          <p><strong>OOC — Out Of Character</strong> : informations hors RP.</p>
+          <p><strong>Metagaming</strong> : utiliser une information OOC en IC.</p>
+          <p><strong>Fail RP</strong> : action non RP ou incohérente.</p>
+          <p><strong>PowerGaming</strong> : action irréalisable dans la vraie vie.</p>
+          <p><strong>Pain RP</strong> : jouer sa douleur.</p>
+          <p><strong>MassRP</strong> : prendre en compte la présence de citoyens ou témoins invisibles.</p>
+          <p><strong>Fear RP</strong> : jouer la peur face à une menace crédible.</p>
+          <p><strong>Car Ramming / Car Kill</strong> : foncer volontairement sur quelqu’un avec un véhicule.</p>
+        `
+      },
+
+      general: {
+        title: "Règles Générales",
+        content: `
+          <p><strong>1.1</strong> Tout type de bug abuse est interdit.</p>
+          <p><strong>1.2</strong> Tout logiciel de triche donnant un avantage est interdit.</p>
+          <p><strong>1.3</strong> Les packs graphiques sont autorisés s’ils ne donnent aucun avantage. PC Check possible.</p>
+          <p><strong>2.1</strong> Les personnages peuvent avoir des opinions RP, mais l’abus peut être sanctionné.</p>
+          <p><strong>2.2</strong> L’insulte OOC est interdite.</p>
+          <p><strong>2.3</strong> Le harcèlement OOC est interdit.</p>
+          <p><strong>2.4</strong> La haine OOC est strictement interdite.</p>
+          <p><strong>3.1</strong> L’insulte contre l’administration est interdite.</p>
+          <p><strong>3.2</strong> Le report IG sert à demander de l’assistance, pas à discuter.</p>
+          <p><strong>3.3</strong> Le respect est la règle numéro une sur LSS.</p>
+          <p><strong>4.1</strong> Mauvaise utilisation du /me interdite.</p>
+          <p><strong>4.2</strong> Quitter une scène RP en refusant de la continuer est interdit.</p>
+          <p><strong>4.3</strong> Le freeloot est interdit.</p>
+          <p><strong>4.5</strong> Actions immorales sur personnes à terre interdites sauf RP cohérent.</p>
+          <p><strong>4.6</strong> Viol RP strictement interdit.</p>
+          <p><strong>4.7</strong> Sex RP interdit sauf consentement et sans gêner les autres joueurs.</p>
+          <p><strong>4.8</strong> Transférer une scène IC en OOC est interdit.</p>
+          <p><strong>4.9</strong> Fonctionnaire + crew illégal interdit sauf personnage infiltré/corrompu validé.</p>
+          <p><strong>4.10</strong> Mercy kill interdit.</p>
+          <p><strong>4.11</strong> Tir sans contexte RP interdit.</p>
+          <p><strong>4.12</strong> Abus de blindé pour car ram interdit.</p>
+          <p><strong>4.13</strong> Abus de tenues de fonctionnaires interdit.</p>
+          <p><strong>4.14</strong> Props incohérents interdits.</p>
+          <p><strong>5.1</strong> Maximum 40 personnes sur une scène RP.</p>
+          <p><strong>5.2</strong> Le côté illégal doit annoncer son nombre à l’arrivée de la police.</p>
+          <p><strong>6.1</strong> Cayo Perico est une île hors de Los Santos.</p>
+          <p><strong>6.2</strong> Cayo Perico peut être contrôlée par son propriétaire.</p>
+          <p><strong>6.3</strong> Cayo Perico possède sa propre juridiction.</p>
+          <p><strong>6.4</strong> Cayo Perico possède sa propre milice privée.</p>
+        `
+      },
+
+      illegal: {
+        title: "Règles Illégales",
+        content: `
+          <p><strong>1.1</strong> Entrer dans un QG de gang/crew sans motif IC est interdit.</p>
+          <p><strong>1.2</strong> Dans un QG, vous devez vous plier aux exigences de ce dernier.</p>
+          <p><strong>1.3</strong> Kidnapper ou braquer des citoyens en pleine ville est interdit.</p>
+          <p><strong>1.4</strong> Les membres de gangs peuvent vous tuer si vous ne respectez pas leurs demandes uniquement dans leur QG.</p>
+          <p><strong>1.5</strong> Forcer des animations immorales est interdit.</p>
+          <p><strong>1.6</strong> Lors d’un braquage, maximum 50% des biens peuvent être pris.</p>
+          <p><strong>1.7a</strong> Vous pouvez voler jusqu’à 25 000$.</p>
+          <p><strong>1.7b</strong> Si le joueur a moins de 25 000$, vous pouvez voler jusqu’à 50% de son argent.</p>
+          <p><strong>1.8</strong> Délai de 4h entre les prises d’otages.</p>
+          <p><strong>1.9</strong> Le teaming entre gangs est interdit sauf contexte RP.</p>
+          <p><strong>1.10</strong> Prise d’otage possible à partir de 5 personnes, 7 pour deux otages, 9 pour trois otages.</p>
+          <p><strong>2.1</strong> Braquer, piller ou prendre en otage un EMS en service est interdit.</p>
+          <p><strong>2.2</strong> Pour braquer un convoi, minimum 5 personnes dans 2 véhicules.</p>
+          <p><strong>2.3</strong> Voler les vêtements/GPB de service est interdit.</p>
+        `
+      },
+
+      legal: {
+        title: "Règles Légales",
+        content: `
+          <p><strong>1.1</strong> Les organismes d’État doivent respecter les normes établies.</p>
+          <p><strong>1.2</strong> Transfert entre organismes interdit sauf validation.</p>
+          <p><strong>1.3</strong> Embaucher une personne avec casier judiciaire est interdit.</p>
+          <p><strong>1.4</strong> Les USSS peuvent prendre la tête d’enquête.</p>
+          <p><strong>1.5</strong> Les lois et procédures sont dirigées par le gouvernement.</p>
+          <p><strong>1.6</strong> Corruption uniquement validée par le gérant légal.</p>
+          <p><strong>1.7</strong> Pot de vin maximum de 500$.</p>
+          <p><strong>1.8</strong> Un fonctionnaire corrompu validé peut aider un gang/crew.</p>
+          <p><strong>1.9</strong> Fonctionnaire corrompu : maximum 500 000$ pour ses services.</p>
+          <p><strong>1.10</strong> 40 minutes pour mettre une personne en cellule après menottage.</p>
+          <p><strong>1.11</strong> Tirer depuis des véhicules blindés est interdit.</p>
+          <p><strong>1.12</strong> Les EMS ne peuvent pas réanimer pendant une fusillade.</p>
+          <p><strong>1.13</strong> Le gouverneur représente le pouvoir absolu de San Andreas.</p>
+          <p><strong>1.14</strong> Le DOJ doit avoir au moins 2 avocats.</p>
+          <p><strong>1.15</strong> Le DOJ doit avoir un procureur d’État.</p>
+        `
+      },
+
+      entreprise: {
+        title: "Règles Entreprises",
+        content: `
+          <p><strong>1.1</strong> Les membres d’une entreprise sont considérés comme neutres.</p>
+          <p><strong>1.2</strong> Les entreprises peuvent établir leurs propres politiques internes.</p>
+          <p><strong>1.3</strong> La cohérence RP est importante lors du recrutement.</p>
+          <p><strong>1.4</strong> Les membres doivent être bien formés.</p>
+        `
+      },
+
+      gang: {
+        title: "Règles Gangs",
+        content: `
+          <p><strong>1.1</strong> Pour créer et faire perdurer un gang, minimum 10 personnes.</p>
+          <p><strong>1.2</strong> Les gangs ne peuvent pas s’allier sauf situation RP justifiée.</p>
+          <p><strong>1.3a</strong> Si le gang est perquisitionné et que le leader est arrêté, l’adjoint reprend le lead.</p>
+          <p><strong>1.3b</strong> Si aucun leader ne peut reprendre, le gang repart de zéro.</p>
+          <p><strong>1.4</strong> Des membres peuvent renverser leur leader avec validation du gérant illégal.</p>
+        `
+      },
+
+      crew: {
+        title: "Règles Crews",
+        content: `
+          <p><strong>1.1</strong> Pour monter un crew, demande en ticket “pôle illégal”.</p>
+          <p><strong>1.2</strong> Minimum 6 personnes dans le crew.</p>
+          <p><strong>1.3</strong> Un crew peut s’allier à un gang.</p>
+          <p><strong>1.4</strong> Un crew peut fusionner avec un autre si les deux dirigeants sont d’accord.</p>
+          <p><strong>1.5</strong> Un crew peut être démantelé.</p>
+        `
+      },
+
+      leader: {
+        title: "Règles Leaders",
+        content: `
+          <p><strong>1.1</strong> Un leader reste leader jusqu’à ce qu’un contexte RP le destitue.</p>
+          <p><strong>1.2</strong> S’il quitte ses fonctions, il doit choisir un successeur.</p>
+          <p><strong>1.3</strong> Les sanctions admin peuvent influencer son rôle.</p>
+          <p><strong>1.4</strong> Un leader ne peut pas être corrompu sauf validation Main Team.</p>
+        `
+      },
+
+      zone: {
+        title: "Règles Zones Vertes",
+        content: `
+          <p><strong>1.1</strong> Les zones vertes sont surveillées. Aucun crime ne peut s’y produire.</p>
+          <p><strong>1.2</strong> Il est interdit de se réfugier en ZV pour fuir une scène RP.</p>
+          <p><strong>1.3</strong> Voler, tuer ou braquer en Zone Verte est interdit.</p>
+          <p><strong>1.4</strong> Liste des ZV : QG d’entreprises, supérettes, parkings, place des cubes, aéroport, auto-école.</p>
+        `
+      }
+    };
+
+    const searchInput = document.getElementById("rulesSearch");
+    const filterSelect = document.getElementById("rulesFilter");
+    const cards = document.querySelectorAll(".rule-card");
+    const searchResultText = document.getElementById("searchResultText");
+
+    function normalizeText(text) {
+      return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/,/g, ".")
+        .trim();
+    }
+
+    function getRuleFullText(card) {
+      const key = card.dataset.ruleKey;
+      const visibleText = card.innerText || "";
+      const modalText = rulesData[key] ? rulesData[key].title + " " + rulesData[key].content : "";
+      const category = card.dataset.category || "";
+
+      return normalizeText(visibleText + " " + modalText + " " + category);
+    }
+
+    function filterRules() {
+      const searchValue = normalizeText(searchInput.value);
+      const filterValue = filterSelect.value;
+      let results = 0;
+
+      cards.forEach(card => {
+        const category = card.dataset.category;
+        const fullText = getRuleFullText(card);
+
+        const matchSearch = searchValue === "" || fullText.includes(searchValue);
+        const matchFilter = filterValue === "all" || category === filterValue;
+
+        if (matchSearch && matchFilter) {
+          card.style.display = "block";
+          results++;
+        } else {
+          card.style.display = "none";
+          card.classList.remove("active");
+        }
+      });
+
+      if (searchValue || filterValue !== "all") {
+        searchResultText.textContent = results > 0
+          ? `${results} catégorie(s) trouvée(s). Clique sur “Voir le détail complet” pour lire la règle.`
+          : "Aucune règle trouvée.";
+      } else {
+        searchResultText.textContent = "";
+      }
+    }
+
+    searchInput.addEventListener("input", filterRules);
+    filterSelect.addEventListener("change", filterRules);
+
+    function openRuleModal(event, ruleKey) {
+      event.stopPropagation();
+
+      const modal = document.getElementById("ruleModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalText = document.getElementById("modalText");
+
+      modalTitle.innerHTML = rulesData[ruleKey].title;
+      modalText.innerHTML = rulesData[ruleKey].content;
+
+      modal.classList.add("active");
+    }
+
+    function closeRuleModal() {
+      document.getElementById("ruleModal").classList.remove("active");
+    }
+
+    document.getElementById("ruleModal").addEventListener("click", function (e) {
+      if (e.target === this) closeRuleModal();
+    });
+  </script>
+
+</body>
+
+</html>
